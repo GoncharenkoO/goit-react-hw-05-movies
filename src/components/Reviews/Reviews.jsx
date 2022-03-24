@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import ShowMore from 'react-simple-show-more';
 import { getMovieReview } from '../../services/themoviedbAPI';
 
 import styles from './reviews.module.css';
@@ -28,6 +29,19 @@ const Reviews = () => {
       <p className={styles.text}>
         <span className={styles.textAccent}>Comment: </span>
         {review.content}
+      </p>
+      <p>
+        <ShowMore
+          text={review.content}
+          length={700}
+          showMoreLabel=" Show more >>"
+          showLessLabel=" Show less <<"
+          style={{
+            cursor: 'pointer',
+            color: 'rgba(238, 138, 16, 0.952)',
+            fontWeight: 'bold',
+          }}
+        />
       </p>
     </li>
   ));

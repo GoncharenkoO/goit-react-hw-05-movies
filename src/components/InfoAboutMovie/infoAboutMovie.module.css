@@ -67,7 +67,6 @@ img {
 }
 
 .menu {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,6 +99,13 @@ img {
 
 .link:nth-last-child(1) {
   margin-right: 30px;
+}
+
+.navigation {
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 1px solid #fff;
 }
 
 .information {

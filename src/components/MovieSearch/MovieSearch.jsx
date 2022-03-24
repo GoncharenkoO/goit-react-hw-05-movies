@@ -7,8 +7,6 @@ import MoviesList from '../../components/MovieSearch/MovieList';
 
 import Loader from '../../components/Loader';
 
-import styles from './movieSearch.module.css';
-
 const MoviesPage = () => {
   const [data, setData] = useState({
     movies: [],
@@ -41,7 +39,7 @@ const MoviesPage = () => {
   const { error, movies, loading } = data;
 
   return (
-    <div className={styles.container}>
+    <>
       <SearchBar onSubmit={changeSearch} />
 
       {query && Boolean(movies.length) && (
@@ -52,8 +50,8 @@ const MoviesPage = () => {
         <p>По запросу {query} ничего не найдено</p>
       )}
 
-      {data.loading && <Loader />}
-    </div>
+      {loading && <Loader />}
+    </>
   );
 };
 

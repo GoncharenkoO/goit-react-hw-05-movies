@@ -13,7 +13,7 @@ const MoviesList = ({ movies }) => {
       <Link
         state={{ from: location }}
         className={styles.link}
-        to={`/movie/${movie.id}`}
+        to={`/movies/${movie.id}`}
       >
         {movie.poster_path ? (
           <img

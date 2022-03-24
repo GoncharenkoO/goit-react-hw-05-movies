@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMoviesCredits } from '../../services/themoviedbAPI';
-import no_image from './no_image.jpg';
+import defAvatar from './defAvatar.png';
 
 import styles from './cast.module.css';
 
 const Cast = () => {
-  // const [cast, setCast] = useState([]);
-  const [actors, setActors] = useState(null);
+  const [actors, setActors] = useState([]);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const Cast = () => {
         src={
           actor.profile_path
             ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
-            : no_image
+            : defAvatar
         }
         alt={actor.original_name}
       />

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { getDetailsMovies } from '../../services/themoviedbAPI';
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import no_image from './no_image.jpg';
-import styles from './searchMovies.module.css';
+import styles from './infoAboutMovie.module.css';
 
-const SearchMovies = () => {
+const InfoAboutMovie = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const navigate = useNavigate();
@@ -55,22 +55,24 @@ const SearchMovies = () => {
         </div>
       )}
 
-      <h3 className={styles.information}>Additional information</h3>
+      <div className={styles.navigation}>
+        <h3 className={styles.information}>Additional information</h3>
 
-      <ul className={styles.menu}>
-        <li>
-          <Link className={styles.link} to={`/movies/${movieId}/cast`}>
-            Cast
-          </Link>
-        </li>
-        <li>
-          <Link className={styles.link} to={`/movies/${movieId}/reviews`}>
-            Reviews
-          </Link>
-        </li>
-      </ul>
+        <ul className={styles.menu}>
+          <li>
+            <Link className={styles.link} to={`/movies/${movieId}/cast`}>
+              Cast
+            </Link>
+          </li>
+          <li>
+            <Link className={styles.link} to={`/movies/${movieId}/reviews`}>
+              Reviews
+            </Link>
+          </li>
+        </ul>
+      </div>
     </>
   );
 };
 
-export default SearchMovies;
+export default InfoAboutMovie;
