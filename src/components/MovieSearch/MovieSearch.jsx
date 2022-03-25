@@ -23,10 +23,17 @@ const MoviesPage = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      // setData({ ...data, loading: true });
       try {
-        const newData = await searchMoviesKey(page, query);
-        setData(...newData);
-      } catch (err) {}
+        const { results } = await searchMoviesKey(page, query);
+        setData(prevState => ({
+          ...prevState,
+          movies: results,
+          loading: false,
+        }));
+      } catch (err) {
+        // setData({ ...data, loading: false, error: err });
+      }
     };
     if (query) {
       fetchPosts();

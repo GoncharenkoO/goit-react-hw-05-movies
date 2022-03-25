@@ -16,11 +16,11 @@ export const getFavoriteMovies = async page => {
   return data;
 };
 
-export const searchMoviesKey = async query => {
+export const searchMoviesKey = async (page = 1, query) => {
   const { data } = await instance.get(`/search/movie`, {
     params: {
       query,
-      page: 1,
+      page,
     },
   });
   return data;
