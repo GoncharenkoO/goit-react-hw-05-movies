@@ -12,7 +12,7 @@ const InfoAboutMovie = () => {
   const location = useLocation();
 
   const onGoBack = () => {
-    navigate(location?.state?.from?.location ?? '/');
+    navigate(location?.state?.from || '/');
   };
 
   const genres = movie?.genres.map(genre => genre.name).join(', ');

@@ -7,7 +7,7 @@ import MoviesList from '../../components/MovieSearch/MovieList';
 
 import Loader from '../../components/Loader';
 
-const MoviesPage = () => {
+const MovieSearch = () => {
   const [data, setData] = useState({
     movies: [],
     loading: false,
@@ -62,4 +62,4 @@ const MoviesPage = () => {
   );
 };
 
-export default MoviesPage;
+export default MovieSearch;
