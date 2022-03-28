@@ -1,8 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from '../HeaderMenu/headerMenu.module.css';
 
-import './headerMenu.module.css';
-
 const getLinkClassName = ({ isActive }) =>
   isActive ? styles.active : styles.link;
 

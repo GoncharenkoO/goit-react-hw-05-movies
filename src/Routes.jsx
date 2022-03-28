@@ -4,11 +4,11 @@ import { ToastContainer } from 'react-toastify';
 import LoaderComponent from './components/Loader';
 import Container from './components/Container';
 import LayoutPage from './components/LayoutPage';
-import Cast from './components/Cast';
-import Reviews from './components/Reviews';
 const HomePage = lazy(() => import('./pages/Homepage'));
 const MoviesPage = lazy(() => import('./pages/MoviesPage'));
 const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage'));
+const Cast = lazy(() => import('./pages/Cast'));
+const Reviews = lazy(() => import('./pages/Reviews'));
 
 const Routers = () => {
   return (
