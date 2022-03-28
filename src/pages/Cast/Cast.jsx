@@ -6,21 +6,36 @@ import defAvatar from './defAvatar.png';
 import styles from './cast.module.css';
 
 const Cast = () => {
-  const [actors, setActors] = useState([]);
+  const [data, setData] = useState({
+    actors: [],
+    loading: false,
+    error: null,
+  });
+
   const { movieId } = useParams();
 
   useEffect(() => {
     const fetchMovieCast = async () => {
+      setData(prevState => ({ ...prevState, loading: true }));
       try {
-        const { cast } = await getMoviesCredits(movieId);
-        setActors(cast);
-      } catch (err) {}
+        const data = await getMoviesCredits(movieId);
+        setData(prevState => ({
+          ...prevState,
+          ...data,
+          loading: false,
+        }));
+      } catch (error) {
+        setData(prevState => ({
+          ...prevState,
+          loading: false,
+          error: error.message,
+        }));
+      }
     };
-
     fetchMovieCast();
   }, [movieId]);
 
-  const castList = actors.map(actor => (
+  const castList = data.actors.map(actor => (
     <li className={styles.castItem} key={actor.id}>
       <img
         className={styles.castImg}

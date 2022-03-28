@@ -6,6 +6,7 @@ import styles from './infoAboutMovie.module.css';
 
 const InfoAboutMovie = () => {
   const [movie, setMovie] = useState(null);
+
   const { movieId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,8 +21,18 @@ const InfoAboutMovie = () => {
     const fetchInfo = async () => {
       try {
         const data = await getDetailsMovies(movieId);
-        setMovie(data);
-      } catch (err) {}
+        setMovie(prevState => ({
+          ...prevState,
+          ...data,
+          loading: false,
+        }));
+      } catch (error) {
+        setMovie(prevState => ({
+          ...prevState,
+          loading: false,
+          error: error.message,
+        }));
+      }
     };
 
     fetchInfo();

@@ -23,7 +23,7 @@ const MoviesPage = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      // setData({ ...data, loading: true });
+      setData(prevState => ({ ...prevState, loading: true }));
       try {
         const { results } = await searchMoviesKey(page, query);
         setData(prevState => ({
@@ -32,7 +32,7 @@ const MoviesPage = () => {
           loading: false,
         }));
       } catch (err) {
-        // setData({ ...data, loading: false, error: err });
+        setData(prevState => ({ ...prevState, loading: false, error: err }));
       }
     };
     if (query) {
