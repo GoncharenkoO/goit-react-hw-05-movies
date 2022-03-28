@@ -39,26 +39,24 @@ const FavoritesMovie = () => {
     fetchPosts();
   }, []);
 
-  const { movies, loading } = data;
-
-  const trendingMovies = movies.map(movie => (
-    <li className={styles.moviesItem} key={movie.id}>
+  const trendingMovies = data.movies.map(film => (
+    <li className={styles.moviesItem} key={film.id}>
       <Link
         className={styles.link}
-        to={`/movies/${movie.id}`}
+        to={`/movies/${film.id}`}
         state={{ from: location }}
       >
         <img
           src={
-            movie.poster_path
-              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+            film.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${film.poster_path}`
               : no_image
           }
-          alt={movie.title}
+          alt={film.title}
           className={styles.poster}
         />
       </Link>
-      <span className={styles.movieTitle}>{movie.title}</span>
+      <span className={styles.movieTitle}>{film.title}</span>
     </li>
   ));
 
@@ -66,7 +64,7 @@ const FavoritesMovie = () => {
     <div className={styles.section}>
       <h1 className={styles.title}>Trending today</h1>
       <ul className={styles.moviesList}>{trendingMovies}</ul>
-      {loading && <Loader />}
+      {data.loading && <Loader />}
     </div>
   );
 };
