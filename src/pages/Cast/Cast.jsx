@@ -18,10 +18,10 @@ const Cast = () => {
     const fetchMovieCast = async () => {
       setData(prevState => ({ ...prevState, loading: true }));
       try {
-        const { results } = await getMoviesCredits(movieId);
+        const { cast } = await getMoviesCredits(movieId);
         setData(prevState => ({
           ...prevState,
-          ...results,
+          actors: cast,
           loading: false,
         }));
       } catch (error) {
