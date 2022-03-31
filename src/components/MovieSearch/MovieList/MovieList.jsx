@@ -22,7 +22,9 @@ export default memo(MoviesList);
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
+      movie: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
     })
   ).isRequired,
+  location: PropTypes.object.isRequired,
 };
