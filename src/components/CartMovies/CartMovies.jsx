@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import no_image from './no_image.jpg';
+import PropTypes from 'prop-types';
 import styles from './cartMovies.module.css';
 
 const CartMovies = ({ movie, location }) => {
@@ -26,3 +27,14 @@ const CartMovies = ({ movie, location }) => {
 };
 
 export default CartMovies;
+
+CartMovies.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+      title: PropTypes.string,
+    })
+  ).isRequired,
+  location: PropTypes.object.isRequired,
+};
