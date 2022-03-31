@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import { getDetailsMovies } from '../../services/themoviedbAPI';
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
+import Loader from '../Loader';
 import no_image from './no_image.jpg';
 import styles from './infoAboutMovie.module.css';
 
 const InfoAboutMovie = () => {
-  const [movie, setMovie] = useState(null);
+  const [state, setState] = useState({
+    movie: {},
+    loading: false,
+    error: null,
+  });
 
   const { movieId } = useParams();
   const navigate = useNavigate();
@@ -15,21 +20,23 @@ const InfoAboutMovie = () => {
     navigate(location?.state?.from || '/');
   };
 
-  const genres = movie?.genres.map(genre => genre.name).join(', ');
+  const genres = Array.isArray(state.movie.genres)
+    ? state.movie?.genres.map(genre => genre.name).join(', ')
+    : '';
 
   useEffect(() => {
     const fetchInfo = async () => {
       try {
         const data = await getDetailsMovies(movieId);
-        setMovie(prevState => ({
+        setState(prevState => ({
           ...prevState,
-          ...data,
+          movie: data,
           loading: false,
         }));
       } catch (error) {
-        setMovie(prevState => ({
+        setState(prevState => ({
           ...prevState,
-          loading: false,
+          Loading: false,
           error: error.message,
         }));
       }
@@ -38,9 +45,12 @@ const InfoAboutMovie = () => {
     fetchInfo();
   }, [movieId]);
 
+  const { movie, loading } = state;
+
   return (
     <>
       <div className={styles.buttonWrapper}>
+        {loading && <Loader />}
         <button className={styles.button} onClick={onGoBack} type="button">
           &#8656;&ensp; Go back
         </button>
