@@ -29,12 +29,9 @@ const CartMovies = ({ movie, location }) => {
 export default CartMovies;
 
 CartMovies.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      poster_path: PropTypes.string,
-      title: PropTypes.string,
-    })
-  ).isRequired,
+  movie: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
   location: PropTypes.object.isRequired,
 };
