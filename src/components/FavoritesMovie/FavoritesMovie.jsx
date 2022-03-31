@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getFavoriteMovies } from '../../services/themoviedbAPI';
+import PropTypes from 'prop-types';
 import CartMovies from '../CartMovies';
 import Loader from '../Loader';
 
@@ -55,3 +56,13 @@ const FavoritesMovie = () => {
 };
 
 export default FavoritesMovie;
+
+FavoritesMovie.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      movie: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  location: PropTypes.object.isRequired,
+};
