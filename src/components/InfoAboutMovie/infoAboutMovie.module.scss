@@ -1,3 +1,5 @@
+@import '../../base/_mixins.scss';
+
 .button {
   min-width: 150px;
   margin-bottom: 20px;
@@ -25,15 +27,32 @@
 }
 
 .movies {
-  display: flex;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #fff;
-  border-top: 1px solid #fff;
+  display: block;
+  // max-width: 320px;
+
+  @include mq(tablet) {
+    display: flex;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    // max-width: 768px;
+  }
+
+  @include mq(desktop) {
+    // max-width: 1280px;
+  }
 }
 
 .movieImage {
+  display: block;
+  width: 300px;
   height: 450px;
   border-radius: 10px;
+  margin-bottom: 20px;
+
+  @include mq(tablet) {
+    margin-bottom: 0;
+  }
 }
 
 .movieInfo {
@@ -53,25 +72,34 @@
   color: #000;
   font-size: 17px;
   font-weight: 400;
-}
 
-.text:last-child {
-  margin-bottom: 0px;
-}
-
-img {
-  display: block;
-  width: 300px;
-  height: 450px;
-  border-radius: 10px;
+  @include mq(tablet) {
+    margin-bottom: 0;
+  }
 }
 
 .menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 50px;
+  display: block;
+
+  @include mq(tablet) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50px;
+  }
+}
+
+.itemLink {
+  margin-bottom: 5px;
+
+  @include mq(tablet) {
+    margin-bottom: 0;
+  }
+}
+
+.itemLink:last-child {
+  margin-bottom: 0px;
 }
 
 .link {
@@ -82,13 +110,18 @@ img {
   font-size: 0.95em;
   font-weight: 600;
   height: 100%;
-  min-width: 300px;
   text-align: center;
   border: 2px solid #6c5b7b;
   padding: 10px;
+  margin-left: 20px;
   transition: all 200ms ease;
   border-radius: 10px;
   text-transform: uppercase;
+
+  @include mq(tablet) {
+    min-width: 300px;
+    margin: 0;
+  }
 }
 
 .link:hover,

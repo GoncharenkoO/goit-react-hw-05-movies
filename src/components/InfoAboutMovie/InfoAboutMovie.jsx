@@ -3,7 +3,7 @@ import { getDetailsMovies } from '../../services/themoviedbAPI';
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import Loader from '../Loader';
 import no_image from './no_image.jpg';
-import styles from './infoAboutMovie.module.css';
+import styles from './infoAboutMovie.module.scss';
 
 const InfoAboutMovie = () => {
   const [state, setState] = useState({
@@ -58,6 +58,7 @@ const InfoAboutMovie = () => {
       {movie && (
         <div className={styles.movies}>
           <img
+            className={styles.movieImage}
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
@@ -80,12 +81,12 @@ const InfoAboutMovie = () => {
         <h3 className={styles.information}>Additional information</h3>
 
         <ul className={styles.menu}>
-          <li>
+          <li className={styles.itemLink}>
             <Link className={styles.link} to={`/movies/${movieId}/cast`}>
               Cast
             </Link>
           </li>
-          <li>
+          <li className={styles.itemLink}>
             <Link className={styles.link} to={`/movies/${movieId}/reviews`}>
               Reviews
             </Link>
